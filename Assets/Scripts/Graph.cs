@@ -9,8 +9,11 @@ public class Graph : MonoBehaviour
     public List<Node> walls = new List<Node>();
 
     int[,] m_mapData;
+
     int m_width;
+    public int Width { get { return m_width; } }
     int m_height;
+    public int Height { get { return m_height; } }
 
     public static readonly Vector2[] allDirections =
     {
@@ -53,9 +56,9 @@ public class Graph : MonoBehaviour
         {
             for (int x = 0; x < m_width; x++)
             {
-                if (nodes[x,y].nodeType != NodeType.Blocked)
+                if (nodes[x, y].nodeType != NodeType.Blocked)
                 {
-                    nodes[x, y].neighbors = GetNeighbors(x, y); 
+                    nodes[x, y].neighbors = GetNeighbors(x, y);
                 }
             }
         }
@@ -75,8 +78,8 @@ public class Graph : MonoBehaviour
             int newX = x + (int)dir.x;
             int newY = y + (int)dir.y;
 
-            if (IsWithinBounds(newX,newY) && nodeArray[newX,newY] != null &&
-                nodeArray[newX,newY].nodeType != NodeType.Blocked)
+            if (IsWithinBounds(newX, newY) && nodeArray[newX, newY] != null &&
+                nodeArray[newX, newY].nodeType != NodeType.Blocked)
             {
                 neighborNodes.Add(nodeArray[newX, newY]);
             }
